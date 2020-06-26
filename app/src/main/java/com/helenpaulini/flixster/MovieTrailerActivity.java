@@ -2,6 +2,7 @@ package com.helenpaulini.flixster;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -9,6 +10,9 @@ import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.helenpaulini.flixster.models.Movie;
+
+import org.parceler.Parcels;
 
 public class MovieTrailerActivity extends YouTubeBaseActivity {
 
@@ -18,7 +22,9 @@ public class MovieTrailerActivity extends YouTubeBaseActivity {
         setContentView(R.layout.activity_movie_trailer);
 
         // temporary test video id -- TODO replace with movie trailer video id
-        final String videoId = "tKodtNFpzBA";
+        Intent intent = getIntent();
+        String key = intent.getStringExtra("youtubeKey");
+        final String videoId = key;
 
         // resolve the player view from the layout
         YouTubePlayerView playerView = (YouTubePlayerView) findViewById(R.id.player);
