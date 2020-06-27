@@ -48,4 +48,18 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/playIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvOverview"
+        android:layout_alignBottom="@+id/thumbnail"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
+        app:srcCompat="@android:drawable/ic_media_play" />
 </RelativeLayout>
