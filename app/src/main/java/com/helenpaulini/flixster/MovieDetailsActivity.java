@@ -14,6 +14,8 @@ import com.bumptech.glide.Glide;
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.helenpaulini.flixster.adapters.MovieAdapter;
+import com.helenpaulini.flixster.databinding.ActivityMainBinding;
+import com.helenpaulini.flixster.databinding.ActivityMovieDetailsBinding;
 import com.helenpaulini.flixster.models.Movie;
 
 import org.json.JSONArray;
@@ -42,16 +44,22 @@ public class MovieDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_details);
+        //setContentView(R.layout.activity_movie_details);
+
+        // simple_activity.xml -> SimpleActivityBinding
+        ActivityMovieDetailsBinding binding = ActivityMovieDetailsBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+
         // unwrap the movie passed in via intent, using its simple name as a key
         movie = (Movie) Parcels.unwrap(getIntent().getParcelableExtra(Movie.class.getSimpleName()));
         Log.d("MovieDetailsActivity", String.format("Showing details for '%s'", movie.getTitle()));
 
         // resolve the view objects
-        tvTitle = (TextView) findViewById(R.id.tvTitle);
-        tvOverview = (TextView) findViewById(R.id.tvOverview);
-        rbVoteAverage = (RatingBar) findViewById(R.id.rbVoteAverage);
-        thumbnail = (ImageView) findViewById(R.id.thumbnail);
+        tvTitle = (TextView) binding.tvTitle;
+        tvOverview = (TextView) binding.tvOverview;
+        rbVoteAverage = (RatingBar) binding.rbVoteAverage;
+        thumbnail = (ImageView) binding.thumbnail;
 
         // set the title and overview
         tvTitle.setText(movie.getTitle());
